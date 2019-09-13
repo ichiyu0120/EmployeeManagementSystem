@@ -96,6 +96,11 @@ div.form {
 	width: 720px;
 	margin: 0px auto;
 }
+div.side_form {
+	width: 100%;
+	padding-left: 15px;
+	margin: 0px auto;
+}
 
 div.label {
 	float: left;

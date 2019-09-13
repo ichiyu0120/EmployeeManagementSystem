@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<link rel="stylesheet" th:href="@{css/layout.css}" />
+<link rel="stylesheet" th:href="@{css/style.css}" />
+<title>社員管理システム</title>
+</head>
+<body class="list">
+<!-- ヘッダー部 -->
+	<header>
+		<div class="content">
+			<div class="title">社員管理システム</div>
+			<div class="user_info">ようこそ、<a href="../update/update_input.html">田中二郎</a>さん<span class="pipeline">|</span><a href="../index.html">ログアウト</a>
+			</div>
+		</div>
+	</header>
+
+	<div class="container content">
+<!-- サイドバー部 -->
+		<aside class="search">
+			<div class="title">社員名検索</div>
+			<div class="side_form">
+				<form action="list.html">
+					<input type="text" name="empName" />
+					<input type="submit" value="検索" />
+				</form>
+			</div>
+			<div class="title">部署名検索</div>
+			<div class="side_form">
+				<form action="list.html">
+					<select name="deptId">
+						<option value="1" selected="selected">営業部</option>
+						<option value="2">経理部</option>
+						<option value="3">総務部</option>
+					</select>
+					<input type="submit" value="検索" />
+				</form>
+			</div>
+		</aside>
+		
+<!-- コンテンツ部 -->
+		<article class="main">
+			<div th:insert="__${contents}__"></div>
+		</article>
+	</div>
+
+<!-- フッター部 -->
+	<footer>
+		<small>Copyright(C) 2017 System Shared co., ltd, ALL Rights Reserved</small>
+		<!-- small要素は免責・著作権・ライセンス要件などを表す際に使用します。 -->
+	</footer>
+</body>
+</html>
