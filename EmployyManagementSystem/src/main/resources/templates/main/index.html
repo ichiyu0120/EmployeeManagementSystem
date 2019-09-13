@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+<link rel="stylesheet" th:href="@{css/layout.css}" />
+<link rel="stylesheet" th:href="@{css/style.css}" />
+<title>社員管理システム</title>
+</head>
+<body>
+	<header>
+		<div class="content">
+			<div class="title">社員管理システム</div>
+		</div>
+	</header>
+
+	<div class="login">
+		<h3>ログイン画面</h3>
+		<div class="form">
+			<p>社員IDとパスワードを入力してください。</p>
+			<form action="list/list.html">
+				<div class="login_label">社員ID</div>
+				<div class="login_input">
+					<input type="text" name="empId" />
+				</div>
+				<div class="login_label">パスワード</div>
+				<div class="login_input">
+					<input type="password" name="empPass" />
+				</div>
+				<div class="login_label"></div>
+				<div class="login_input">
+					<input type="submit" value="ログイン" />
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		<div class="content">Copyright(C) 2019 Hogehoge System co., ltd, ALL Rights Reserved</div>
+	</footer>
+</body>
+</html>
