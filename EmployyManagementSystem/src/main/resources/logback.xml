@@ -16,6 +16,9 @@
       <appender-ref ref="CONSOLE" />
     </logger>    
 
+    <logger name="sql.com.example" level="DEBUG" additivity="false">
+      <appender-ref ref="CONSOLE" />
+    </logger>    
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
