@@ -14,6 +14,7 @@ public class Emp {
 	private String address;
 	private Date birthday;
 	private String role;
+	private int deptId;
 	private Department dept;
 	private boolean enable;
 }

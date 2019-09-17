@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.ems.domain.repository.mybatis.EmpMapper">
+
+	<resultMap type="com.example.demo.ems.domain.model.Emp" id="emp">
+		<id column="emp_id" property="empId"/>
+		<result column="emp_pass" property="empPass"/>
+		<result column="emp_name" property="empName"/>
+		<result column="gender" property="gender"/>
+		<result column="address" property="address"/>
+		<result column="birthday" property="birthday"/>
+		<result column="role" property="role"/>
+		<result column="dept_id" property="deptId"/>
+		<result column="enable" property="enable"/>
+		<collection property="dept" ofType="com.example.demo.ems.domain.model.Department">
+			<result column="dept_name" property="deptName"/>
+		</collection>
+	</resultMap>
+	
+<!-- 全件検索 -->
+	<select id="selectAll" resultMap="emp">
+		SELECT
+			 emp_id,
+			 emp_pass,
+			 emp_name,
+			 gender,
+			 address,
+			 birthday,
+			 role,
+			 e.dept_id,
+			 dept_name,
+			 enable 
+		FROM
+			 emp e 
+		INNER JOIN
+			 department d 
+		ON
+			 e.dept_id = d.dept_id 
+		ORDER BY
+			 emp_id ASC
+	</select>
+	
+<!-- 1件取得 -->
+	<select id="selectOne" parameterType="int" resultMap="emp">
+		SELECT
+			 emp_id,
+			 emp_pass,
+			 emp_name,
+			 gender,
+			 address,
+			 birthday,
+			 role,
+			 e.dept_id,
+			 dept_name,
+			 enable 
+		FROM
+			 emp e 
+		INNER JOIN
+			 department d 
+		ON
+			 e.dept_id = d.dept_id 
+		WHERE
+			 emp_id = #{empId}
+		ORDER BY
+			 emp_id ASC
+	</select>
+	
+<!-- 新規登録 -->
+	<insert id="insert" parameterType="emp">
+		INSERT INTO
+			 emp 
+		VALUES(
+			#{empPass},
+			#{empName},
+			#{gender},
+			#{address},
+			#{birthday},
+			#{role},
+			#{deptId},
+			#{enable})
+	</insert>
+	
+<!-- 更新 -->
+	<update id="update" parameterType="emp">
+		UPDATE
+			 emp 
+		SET
+			 emp_pass = #{empPass},
+			 emp_name = #{empName},
+			 gender = #{gender},
+			 address = #{address},
+			 birthday = #{birthday},
+			 role = #{role},
+			 dept_id = #{deptId},
+	</update>
+	
+<!-- 削除 -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM
+			 emp 
+		WHERE
+			 emp_id = #{empId}
+	</delete>
+	
+<!-- 社員名検索 -->
+	<select id="nameSearch" parameterType="string" resultMap="emp">
+		SELECT
+			 emp_id,
+			 emp_pass,
+			 emp_name,
+			 gender,
+			 address,
+			 birthday,
+			 role,
+			 e.dept_id,
+			 dept_name,
+			 enable 
+		FROM
+			 emp e 
+		INNER JOIN
+			 department d 
+		ON
+			 e.dept_id = d.dept_id 
+		WHERE
+			 emp_name 
+		LIKE
+			 ?
+		ORDER BY
+			 emp_id ASC
+	</select>
+	
+<!-- 部署名検索 -->
+	<select id="deptSearch"  parameterType="string" resultMap="emp">
+		SELECT
+			 emp_id,
+			 emp_pass,
+			 emp_name,
+			 gender,
+			 address,
+			 birthday,
+			 role,
+			 e.dept_id,
+			 dept_name,
+			 enable 
+		FROM
+			 emp e 
+		INNER JOIN
+			 department d 
+		ON
+			 e.dept_id = d.dept_id 
+		WHERE
+			 dept_id = #{deptId}
+		ORDER BY
+			 emp_id ASC
+	</select>
+</mapper>
