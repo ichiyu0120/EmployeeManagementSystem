@@ -1,4 +1,5 @@
 **☆社員管理システム☆**  
+今更ですがEmployeeでした・・・。
 
 **2019/09/13　プロジェクト作成**  
 　[DBの中身]
@@ -26,4 +27,6 @@ ListController、EmpServiceに追記してlist.htmlを変更すればDBのデー
 
 ・2019/09/17  
 EmpMapper作成、Emp.javaにdeptIdのフィールド追加、countメソッド不要そうなので削除しました。  
-DepartmentMapperTestがH2だと上手く動かなかったのでSQLServerに接続してテストを行ってます。
+DepartmentMapperTestがH2だと上手く動かなかったのでSQLServerに接続してテストを行ってます。  
+・ログインボタン押下後DBを参照して全件表示出来ました。  
+性別、権限の表示が好ましくないのでService内で対応してみます。 **←now!**
