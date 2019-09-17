@@ -23,4 +23,7 @@ indexページから一覧表示への画面遷移完了。
 上記で使用するRepository,Model作成済み。  
 ListController、EmpServiceに追記してlist.htmlを変更すればDBのデータを一覧表示出来るはず。  
 ログイン処理はまだ実装していないので、ログインは素通り。  
-次回は、ListController,EmpService,list.htmlの編集から始める。
+
+・2019/09/17  
+EmpMapper作成、Emp.javaにdeptIdのフィールド追加、countメソッド不要そうなので削除しました。  
+DepartmentMapperTestがH2だと上手く動かなかったのでSQLServerに接続してテストを行ってます。

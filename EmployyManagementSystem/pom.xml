@@ -69,6 +69,13 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+		
+				<!-- SQLServer接続用 -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc</artifactId>
+			<version>6.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
