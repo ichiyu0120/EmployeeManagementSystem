@@ -33,7 +33,7 @@ public class DepartmentMapperTest {
 		
 		assertNotNull(actual);
 		assertThat(actual.getDeptId(), is(1));
-		assertThat(actual.getDeptName(), is("営業部"));
+		assertThat(actual.getDeptName(), is("管理本部"));
 
 		
 		

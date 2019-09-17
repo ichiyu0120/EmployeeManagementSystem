@@ -132,7 +132,7 @@
 	</select>
 	
 <!-- 部署名検索 -->
-	<select id="deptSearch"  parameterType="string" resultMap="emp">
+	<select id="deptSearch"  parameterType="int" resultMap="emp">
 		SELECT
 			 emp_id,
 			 emp_pass,
@@ -151,7 +151,7 @@
 		ON
 			 e.dept_id = d.dept_id 
 		WHERE
-			 dept_id = #{deptId}
+			 e.dept_id = #{deptId}
 		ORDER BY
 			 emp_id ASC
 	</select>
