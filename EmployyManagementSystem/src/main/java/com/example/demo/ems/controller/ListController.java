@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.ems.domain.model.Emp;
 import com.example.demo.ems.domain.model.SearchForm;
 import com.example.demo.ems.domain.service.EmpService;
+import com.example.demo.ems.util.Conversion;
 
 @Controller
 public class ListController {
 	
 	@Autowired
 	EmpService service;
+	
+	@Autowired
+	Conversion conversion;
 	
 	//get送信された場合はindexに戻す
 	@GetMapping("/listCtrl")
@@ -46,7 +50,6 @@ public class ListController {
 			List<Emp> empList = service.nameSearch(form.getName());
 			model.addAttribute("empList",empList);
 		}
-		
 		model.addAttribute("contents","list/list");
 		
 		return "main/mainDisplay";

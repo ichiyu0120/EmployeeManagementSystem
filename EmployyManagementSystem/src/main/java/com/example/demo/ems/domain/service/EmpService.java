@@ -19,27 +19,7 @@ public class EmpService {
 	//全件検索
 	public List<Emp> selectAll(){
 		
-		List<Emp> empList = empMapper.selectAll();
-
-		//権限と性別を表示させたい値にif文で変更
-		for(Emp emp:empList){
-			if(emp.getRole().equals("ROLE_ADMIN")) {
-				emp.setRole("管理者");
-			}else if(emp.getRole().equals("ROLE_GENERAL")) {
-				emp.setRole("一般");
-			}else {
-				emp.setRole("不明");
-			}
-			
-			if(emp.getGender() == 1) {
-				emp.setStrGender("男性");
-			}else if(emp.getGender() == 2) {
-				emp.setStrGender("女性");
-			}else {
-				emp.setStrGender("不明");
-			}
-		}
-		return empList;
+		return empMapper.selectAll();
 	}
 
 	//1件取得
@@ -70,26 +50,8 @@ public class EmpService {
 	public List<Emp> nameSearch(String name){
 		
 		String empName = "%"+name+"%";
-		List<Emp> empList = empMapper.nameSearch(empName);
+		return empMapper.nameSearch(empName);
 		
-		for(Emp emp:empList){
-			if(emp.getRole().equals("ROLE_ADMIN")) {
-				emp.setRole("管理者");
-			}else if(emp.getRole().equals("ROLE_GENERAL")) {
-				emp.setRole("一般");
-			}else {
-				emp.setRole("不明");
-			}
-			
-			if(emp.getGender() == 1) {
-				emp.setStrGender("男性");
-			}else if(emp.getGender() == 2) {
-				emp.setStrGender("女性");
-			}else {
-				emp.setStrGender("不明");
-			}
-		}
-		return empList;
 	}
 	
 	//部署名検索

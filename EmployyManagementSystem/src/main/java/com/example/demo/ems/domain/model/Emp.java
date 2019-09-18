@@ -11,7 +11,6 @@ public class Emp {
 	private String empPass;
 	private String empName;
 	private int gender;
-	private String strGender;
 	private String address;
 	private Date birthday;
 	private String role;

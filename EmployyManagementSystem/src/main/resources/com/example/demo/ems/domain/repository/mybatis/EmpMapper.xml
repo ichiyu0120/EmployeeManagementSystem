@@ -126,7 +126,7 @@
 		WHERE
 			 emp_name 
 		LIKE
-			 ?
+			 #{empName} 
 		ORDER BY
 			 emp_id ASC
 	</select>

@@ -25,10 +25,10 @@
 			<tr th:each="emp:${empList}">
 				<td th:text="${emp.empId}"></td>
 				<td th:text="${emp.empName}"></td>
-				<td th:text="${emp.strGender}"></td>
+				<td th:text="${@conversion.genderConversion(emp.gender)}"></td>
 				<td th:text="${emp.address}"></td>
 				<td th:text="${#dates.format(emp.birthday,'YYYY/M/d')}"></td>
-				<td th:text="${emp.role}"></td>
+				<td th:text="${@conversion.roleConversion(emp.role)}"></td>
 				<td th:text="${emp.dept.deptName}"></td>
 				<td class="button">
 					<form action="../update/update_input.html">
