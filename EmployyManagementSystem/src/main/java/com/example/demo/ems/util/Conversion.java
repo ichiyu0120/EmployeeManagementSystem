@@ -36,4 +36,23 @@ public class Conversion {
 		
 		return strGender;
 	}
+	
+	//部署IDを対応した部署名に変換するメソッド
+	public String deptConversion(int deptId) {
+		
+		String deptName;
+		
+		if(deptId == 1) {
+			deptName = "営業部";
+		}else if(deptId == 2) {
+			deptName = "経理部";
+		}else if(deptId ==3){
+			deptName = "総務部";
+		}else {
+			deptName = "不明";
+		}
+		
+		return deptName;
+
+	}
 }

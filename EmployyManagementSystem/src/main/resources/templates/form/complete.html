@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>完了画面</title>
+</head>
+<body>
+	<h3 th:text="${title}"></h3>
+	<div class="message">
+		<p th:text="${message}"></p>
+		<p>
+			<a th:href="@{'/listCtrl'}">一覧表示に戻る</a>
+		</p>
+	</div>
+</body>
+</html>

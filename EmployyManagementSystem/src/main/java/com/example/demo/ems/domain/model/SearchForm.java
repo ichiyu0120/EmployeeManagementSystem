@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class SearchForm {
+	
+	private int empId;
 
 	private String name;
 	

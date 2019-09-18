@@ -29,7 +29,7 @@ public class ListController {
 		return "redirect:/index";
 	}
 	
-	//post送信された場合はlist.htmlを持たせてhomeLayoutへ
+	//post送信された場合はlist.htmlを持たせてmainDisplayへ
 	@PostMapping("/listCtrl")
 	public String postList(Model model) {
 		

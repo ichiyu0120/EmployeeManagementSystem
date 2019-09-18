@@ -10,6 +10,7 @@ body {
 /* ---- ページタイトル ---- */
 h3 {
 	padding-left: 20px;
+	font-weight: bold;
 }
 
 /* ---- 社員登録入力画面へのリンク ---- */
@@ -21,7 +22,7 @@ div.regist_link {
 
 /* ---- 社員情報一覧テーブル ---- */
 table {
-	background-color: #FFFFFF;
+	background-color: #ffffff;
 	border-color: #87CEEB;
 	border-width: 1px;
 	border-style: solid;
@@ -29,10 +30,17 @@ table {
 	margin: 0px auto 20px;
 }
 
-table td, table th {
+table td {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #87CEEB;
+}
+
+table th {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #87CEEB;
+	text-align: center;
 }
 
 td.data {
@@ -108,6 +116,9 @@ div.label {
 	height: 35px;
 	padding-right: 5px;
 	text-align: right;
+	color: #12526D;
+	font-size: 130%;
+	font-weight: normal;
 }
 
 div.input {
@@ -115,6 +126,13 @@ div.input {
 	width: 470px;
 	height: 35px;
 	text-align: left;
+}
+
+div.input_button {
+	float: left;
+	width: 470px;
+	height: 35px;
+	text-align: center;
 }
 
 select {
