@@ -63,8 +63,6 @@
 			 e.dept_id = d.dept_id 
 		WHERE
 			 emp_id = #{empId}
-		ORDER BY
-			 emp_id ASC
 	</select>
 	
 <!-- 新規登録 -->

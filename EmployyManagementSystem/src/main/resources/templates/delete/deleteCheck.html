@@ -6,7 +6,7 @@
 <title>確認画面</title>
 </head>
 <body>
-	<h3>社員登録確認画面</h3>
+	<h3>社員削除確認画面</h3>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -36,32 +36,19 @@
 			<div class="label">部署名：</div>
 			<div class="input" th:text="${@conversion.deptConversion(emp.deptId)}"></div>
 		</div>
-		<form th:action="@{/insertComplete}" method="post">
+		<form th:action="@{/deleteComplete}" method="post">
 			<div class="form">
 				<div class="label"></div>
 				<div class="submit_button">
-					<input type="hidden" name="empPass" th:value="${emp.empPass}">
-					<input type="hidden" name="empName" th:value="${emp.empName}">
-					<input type="hidden" name="gender" th:value="${emp.gender}">
-					<input type="hidden" name="address" th:value="${emp.address}">
-					<input type="hidden" name="birthday" th:value="${#dates.format(emp.birthday,'YYYY/MM/dd')}">
-					<input type="hidden" name="role" th:value="${emp.role}">
-					<input type="hidden" name="deptId" th:value="${emp.deptId}">
-					<input type="submit" value="登録" />
+					<input type="hidden" name="empId" th:value="${emp.empId}">
+					<input type="submit" value="削除" />
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/insertReturn}" method="post">
+		<form th:action="@{/list}" method="post">
 			<div class="form">
 				<div class="label"></div>
 				<div class="submit_button">
-					<input type="hidden" name="empPass" th:value="${emp.empPass}">
-					<input type="hidden" name="empName" th:value="${emp.empName}">
-					<input type="hidden" name="gender" th:value="${emp.gender}">
-					<input type="hidden" name="address" th:value="${emp.address}">
-					<input type="hidden" name="bithday" th:value="${#dates.format(emp.birthday,'YYYY/MM/dd')}">
-					<input type="hidden" name="role" th:value="${emp.role}">
-					<input type="hidden" name="deptId" th:value="${emp.deptId}">
 					<input type="submit" value="戻る" />
 				</div>
 			</div>

@@ -27,7 +27,7 @@ public class InsertController {
 	EmpService service;
 	
 	//新規登録入力画面へ遷移
-	@GetMapping("/insertInputCtrl")
+	@GetMapping("/insertInput")
 	public String getInsertInput(Model model) {
 		
 		Emp emp = util.empInitialCreate();
@@ -38,19 +38,19 @@ public class InsertController {
 	}
 	
 	//登録確認画面へ遷移
-	@PostMapping("/insertCheckCtrl")
+	@PostMapping("/insertCheck")
 	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		
 		model.addAttribute("emp",emp);
-		model.addAttribute("contents","form/checkForm");
+		model.addAttribute("contents","insert/checkForm");
 		
 		return "main/mainDisplay";
 	}
 	
 	//確認画面から登録画面へEmpを持って戻す
-	@PostMapping("/insertReturnCtrl")
+	@PostMapping("/insertReturn")
 	public String postInsertReturn(@ModelAttribute RegistForm form,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
@@ -62,8 +62,8 @@ public class InsertController {
 	}
 	
 	//登録処理を行い、完了画面へ遷移
-	@PostMapping("/insertCompleteCtrl")
-	public String insertComplete(@ModelAttribute @Validated RegistForm form,Model model) {
+	@PostMapping("/insertComplete")
+	public String insertComplete(@ModelAttribute RegistForm form,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		

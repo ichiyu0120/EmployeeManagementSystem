@@ -25,14 +25,14 @@
 		<aside class="search">
 			<div class="title">社員名検索</div>
 			<div class="side_form">
-				<form th:action="@{/nameSearchCtrl}" method="post" th:object="${SearchForm}">
+				<form th:action="@{/nameSearch}" method="post" th:object="${SearchForm}">
 					<input type="text" name="name" />
 					<input type="submit" value="検索" />
 				</form>
 			</div>
 			<div class="title">部署名検索</div>
 			<div class="side_form">
-				<form th:action="@{/deptSearchCtrl}" method="post" th:object="${SearchForm}">
+				<form th:action="@{/deptSearch}" method="post" th:object="${SearchForm}">
 					<select name="deptId">
 						<option value="1" selected="selected">営業部</option>
 						<option value="2">経理部</option>

@@ -8,7 +8,7 @@
 <body>
 	<h3>新規登録入力画面</h3>
 	<div class="update">
-		<form th:action="@{/insertCheckCtrl}" method="post">
+		<form th:action="@{/insertCheck}" method="post">
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input">
@@ -59,15 +59,15 @@
 			</div>
 			<div class="form">
 				<div class="label"></div>
-				<div class="input_button">
+				<div class="submit_button">
 					<input type="submit" value="確認" />
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/listCtrl}" method="post">
+		<form th:action="@{/list}" method="post">
 			<div class="form">
 				<div class="label"></div>
-				<div class="input_button">
+				<div class="submit_button">
 					<input type="submit" value="戻る" />
 				</div>
 			</div>

@@ -24,13 +24,13 @@ public class ListController {
 	Conversion conversion;
 	
 	//get送信された場合はindexに戻す
-	@GetMapping("/listCtrl")
+	@GetMapping("/list")
 	public String getList() {
 		return "redirect:/index";
 	}
 	
 	//post送信された場合はlist.htmlを持たせてmainDisplayへ
-	@PostMapping("/listCtrl")
+	@PostMapping("/list")
 	public String postList(Model model) {
 		
 		List<Emp> empList = service.selectAll();
@@ -41,7 +41,7 @@ public class ListController {
 	}
 	
 	//社員名検索
-	@PostMapping("/nameSearchCtrl")
+	@PostMapping("/nameSearch")
 	public String postNameSearch(@ModelAttribute SearchForm form,Model model) {
 		if(form.getName().length() == 0) {
 			List<Emp> empList = service.selectAll();
@@ -56,7 +56,7 @@ public class ListController {
 	}
 	
 	//部署名検索
-	@PostMapping("/deptSearchCtrl")
+	@PostMapping("/deptSearch")
 	public String postDeptSearch(@ModelAttribute SearchForm form,Model model) {
 		List<Emp> empList = service.deptSearch(form.getDeptId());
 		model.addAttribute("empList",empList);
