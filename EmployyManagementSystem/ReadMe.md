@@ -48,9 +48,8 @@ EmpMapper作成、Emp.javaにdeptIdのフィールド追加、countメソッド�
 方法4：そもそもDBを変更して"男性""女性"で登録する。
 </div>
 </details>
-  
 一応現状は方法2を使って性別名で表記できてます。  
-
+↓↓↓
 ◇解決◇(2019/09/18)  
 対応した文字列へ変換するConversionクラスを作成。  
 Controllerで@AutowiredでBean化し、Vで呼び出す。  
