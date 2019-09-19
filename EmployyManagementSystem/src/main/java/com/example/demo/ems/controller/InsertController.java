@@ -3,6 +3,7 @@ package com.example.demo.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +43,7 @@ public class InsertController {
 	
 	//登録確認画面へ遷移
 	@PostMapping("/insertCheckCtrl")
-	public String postInsertcheck(@ModelAttribute RegistForm form,Model model) {
+	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		
@@ -64,6 +65,7 @@ public class InsertController {
 		String title = "新規登録入力画面";
 		String buttonName = "登録";
 		Emp emp = util.createEmpWithForm(form);
+		
 		model.addAttribute("emp",emp);
 		model.addAttribute("title",title);
 		model.addAttribute("buttonName",buttonName);
@@ -74,10 +76,11 @@ public class InsertController {
 	
 	//登録処理を行い、完了画面へ遷移
 	@PostMapping("/insertCompleteCtrl")
-	public String insertComplete(@ModelAttribute RegistForm form,Model model) {
+	public String insertComplete(@ModelAttribute @Validated RegistForm form,Model model) {
 		
 		String title = "社員登録完了画面";
 		Emp emp = util.createEmpWithForm(form);
+		
 		int result = service.insert(emp);
 		String message;
 		if(0 < result) {

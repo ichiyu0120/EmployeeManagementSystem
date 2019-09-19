@@ -9,9 +9,9 @@
 	<h3 th:text="${title}"></h3>
 	<div class="message">
 		<p th:text="${message}"></p>
-		<p>
-			<a th:href="@{'/listCtrl'}">一覧表示に戻る</a>
-		</p>
+		<form name="return_list" method="post" th:action="@{/listCtrl}">
+			<a href="javascript:return_list.submit()">一覧表示に戻る</a>
+		</form>
 	</div>
 </body>
 </html>
