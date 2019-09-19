@@ -18,10 +18,15 @@
 　　　enable →bit NN 初期値true  
 </div>
 </details>
-　　Departmentテーブル  
+
+<details>
+<summary>Departmentテーブル</summary>
+<div>
+
 　　　dept_id →int 自動採番 主キー  
 　　　dept_name →nvarchar(15) NN  
-
+</div>
+</details>
 **メモ**  
 ・2019/09/13  
 indexページから一覧表示への画面遷移完了。  
