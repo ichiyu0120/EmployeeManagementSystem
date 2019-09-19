@@ -2,7 +2,7 @@
 今更ですがEmployeeでした・・・。
 
 **2019/09/13　プロジェクト作成**  
-　[DBの中身]
+　[DBの中身]  
 　　Empテーブル  
 　　　emp_id →int 自動採番 主キー  
 　　　emp_pass →nvarchar(Max) NN  
@@ -58,3 +58,12 @@ DBの値も正しい形式で登録されてます。
 削除処理を作成。URLにCtrlと付いているのがイケてなく感じたので、名前を変更。
 **疑問メモ**  
 htmlのラジオボタンやプルダウン形式のフォームに関して、更新の初期画面等で初期値をDBに登録されている値にしたい場合、if文でselectedを各パターンで作成すれば出来るがifを使わないで処理できるかどうか模索中
+
+<details>
+<summary>aaaaa
+</summary>
+<div>
+
+bbbbb
+</div>
+</details>
