@@ -6,7 +6,7 @@
 <title>入力フォーム</title>
 </head>
 <body>
-	<h3 th:text="${title}"></h3>
+	<h3>新規登録入力画面</h3>
 	<div class="update">
 		<form th:action="@{/insertCheckCtrl}" method="post">
 			<div class="form">
@@ -60,7 +60,7 @@
 			<div class="form">
 				<div class="label"></div>
 				<div class="input_button">
-					<input type="submit" th:value="${buttonName}" />
+					<input type="submit" value="確認" />
 				</div>
 			</div>
 		</form>

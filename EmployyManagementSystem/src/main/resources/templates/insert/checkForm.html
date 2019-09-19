@@ -6,7 +6,7 @@
 <title>確認画面</title>
 </head>
 <body>
-	<h3 th:text="${title}"></h3>
+	<h3>社員登録確認画面</h3>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>
@@ -47,7 +47,7 @@
 					<input type="hidden" name="birthday" th:value="${#dates.format(emp.birthday,'YYYY/MM/dd')}">
 					<input type="hidden" name="role" th:value="${emp.role}">
 					<input type="hidden" name="deptId" th:value="${emp.deptId}">
-					<input type="submit" th:value="${buttonName}" />
+					<input type="submit" value="登録" />
 				</div>
 			</div>
 		</form>

@@ -30,13 +30,9 @@ public class InsertController {
 	@GetMapping("/insertInputCtrl")
 	public String getInsertInput(Model model) {
 		
-		String title = "新規登録入力画面";
-		String buttonName = "登録";
 		Emp emp = util.empInitialCreate();
 		model.addAttribute("emp",emp);
-		model.addAttribute("title",title);
-		model.addAttribute("buttonName",buttonName);
-		model.addAttribute("contents", "form/inputForm");
+		model.addAttribute("contents", "insert/inputForm");
 		
 		return "main/mainDisplay";
 	}
@@ -46,11 +42,6 @@ public class InsertController {
 	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
-		
-		String title = "社員登録確認画面";
-		String buttonName = "登録";
-		model.addAttribute("title",title);
-		model.addAttribute("buttonName",buttonName);
 		
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents","form/checkForm");
@@ -62,14 +53,10 @@ public class InsertController {
 	@PostMapping("/insertReturnCtrl")
 	public String postInsertReturn(@ModelAttribute RegistForm form,Model model) {
 		
-		String title = "新規登録入力画面";
-		String buttonName = "登録";
 		Emp emp = util.createEmpWithForm(form);
 		
 		model.addAttribute("emp",emp);
-		model.addAttribute("title",title);
-		model.addAttribute("buttonName",buttonName);
-		model.addAttribute("contents", "form/inputForm");
+		model.addAttribute("contents", "insert/inputForm");
 		
 		return "main/mainDisplay";
 	}
@@ -78,7 +65,6 @@ public class InsertController {
 	@PostMapping("/insertCompleteCtrl")
 	public String insertComplete(@ModelAttribute @Validated RegistForm form,Model model) {
 		
-		String title = "社員登録完了画面";
 		Emp emp = util.createEmpWithForm(form);
 		
 		int result = service.insert(emp);
@@ -89,9 +75,8 @@ public class InsertController {
 			message = "処理に失敗しました。";
 		}
 		
-		model.addAttribute("title",title);
 		model.addAttribute("message",message);
-		model.addAttribute("contents", "form/complete");
+		model.addAttribute("contents", "insert/complete");
 		
 		return "main/mainDisplay";
 		
