@@ -1,5 +1,8 @@
 package com.example.demo.ems.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,15 +11,12 @@ public class Conversion {
 	//権限を値に応じてStringに変換するメソッド
 	public String roleConversion(String role) {
 		
-		String convRole;
+		Map<String,String> map = new HashMap<>();
 		
-		if(role.equals("ROLE_ADMIN")) {
-			convRole = "管理者";
-		}else if(role.equals("ROLE_GENERAL")) {
-			convRole = "一般";
-		}else {
-			convRole = "不明";
-		}
+		map.put("ROLE_ADMIN", "管理者");
+		map.put("ROLE_GENERAL", "一般");
+		
+		String convRole = map.get(role);
 		
 		return convRole;
 	}
@@ -24,15 +24,12 @@ public class Conversion {
 	//性別を値に応じてStringに変換するメソッド
 	public String genderConversion(int gender) {
 		
-		String strGender;
+		Map<Integer, String> map = new HashMap<>();
 		
-		if(gender == 1) {
-			strGender = "男性";
-		}else if(gender == 2) {
-			strGender = "女性";
-		}else {
-			strGender = "不明";
-		}
+		map.put(1, "男性");
+		map.put(2, "女性");
+		
+		String strGender = map.get(gender);
 		
 		return strGender;
 	}
@@ -40,19 +37,16 @@ public class Conversion {
 	//部署IDを対応した部署名に変換するメソッド
 	public String deptConversion(int deptId) {
 		
-		String deptName;
+		Map<Integer, String> map = new HashMap<>();
+		map.put(1, "営業部");
+		map.put(2, "経理部");
+		map.put(3, "総務部");
 		
-		if(deptId == 1) {
-			deptName = "営業部";
-		}else if(deptId == 2) {
-			deptName = "経理部";
-		}else if(deptId ==3){
-			deptName = "総務部";
-		}else {
-			deptName = "不明";
-		}
+		String deptName = map.get(deptId);
 		
 		return deptName;
 
 	}
+	
+	
 }
