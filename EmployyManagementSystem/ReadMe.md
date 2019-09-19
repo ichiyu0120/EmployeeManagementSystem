@@ -3,7 +3,10 @@
 
 **2019/09/13　プロジェクト作成**  
 　[DBの中身]  
-　　Empテーブル  
+<details>
+<summary>Empテーブル</summary>
+<div>
+
 　　　emp_id →int 自動採番 主キー  
 　　　emp_pass →nvarchar(Max) NN  
 　　　emp_name →nvarchar(30) NN  
@@ -13,7 +16,8 @@
 　　　role →nvarchar(20) NN  
 　　　dept_id →int NN Departmentのdept_idと関連付け  
 　　　enable →bit NN 初期値true  
-
+</div>
+</details>
 　　Departmentテーブル  
 　　　dept_id →int 自動採番 主キー  
 　　　dept_name →nvarchar(15) NN  
@@ -63,7 +67,7 @@ htmlのラジオボタンやプルダウン形式のフォームに関して、�
 <summary>aaaaa
 </summary>
 <div>
-
+  
 bbbbb
 </div>
 </details>
