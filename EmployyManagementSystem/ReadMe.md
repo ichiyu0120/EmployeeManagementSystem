@@ -49,6 +49,7 @@ EmpMapper作成、Emp.javaにdeptIdのフィールド追加、countメソッド�
 </div>
 </details>
 一応現状は方法2を使って性別名で表記できてます。  
+
 ↓↓↓
 ◇解決◇(2019/09/18)  
 対応した文字列へ変換するConversionクラスを作成。  
