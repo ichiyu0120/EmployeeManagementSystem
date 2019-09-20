@@ -29,7 +29,7 @@ public class UpdateController {
 	
 	//empIdの該当データを取得して入力画面へ
 	@PostMapping("/updateInput")
-	public String postUpdateInput(@RequestParam("empId")int empId,Model model) {
+	public String postUpdateInput(@ModelAttribute RegistForm form,@RequestParam("empId")int empId,Model model) {
 		
 		Emp emp = service.selectOne(empId);
 		model.addAttribute("emp",emp);
@@ -47,7 +47,7 @@ public class UpdateController {
 		model.addAttribute("emp",emp);
 		
 		if(bindingResult.hasErrors()) {
-			model.addAttribute("contents","update/updateCheck");
+			model.addAttribute("contents","update/updateInput");
 			return "main/mainDisplay";
 		}
 		

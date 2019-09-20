@@ -10,63 +10,63 @@
 	<h3>社員更新入力画面</h3>
 	<div class="update">
 	
-	<ul>
-		<li th:each="error:${#fields.detailedErrors()}">
-			<span th:text="${error.message}">Error message</span>
-		</li>
-	</ul>
-	
-		<form th:action="@{/updateCheck}" method="post">
+		<form th:action="@{/updateCheck}" method="post" th:object=${registForm}>
 			<div class="form">
 				<div class="label">パスワード：</div>
-				<div class="input">
-					<input type="password" name="empPass" th:value="${emp.empPass}"/>
+				<div class="input" th:classappend="${#fields.hasErrors('empPass')}?has-error">
+					<input type="password" name="empPass" th:value="${emp.empPass}" />
+					<span class="text-danger" th:if="${#fields.hasErrors('empPass')}" th:errors="*{empPass}">empPass error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">社員名：</div>
-				<div class="input">
+				<div class="input" th:classappend="${#fields.hasErrors('empName')}?has-error">
 					<input type="text" name="empName" th:value="${emp.empName}"/>
+					<span class="text-danger" th:if="${#fields.hasErrors('empName')}" th:errors="*{empName}">empName error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">性別：</div>
-				<div class="input">
+				<div class="input" th:classappend="${#fields.hasErrors('gender')}?has-error">
 					<input type="hidden" name="hiddenGender" th:value="${emp.gender}">
-					<input type="radio" name="gender" value="1" />男性&nbsp; <input
-						type="radio" name="gender" value="2" />女性
-					
+					<input type="radio" name="gender" value="1"/>男性&nbsp; <input
+						type="radio" name="gender" value="2"/>女性&nbsp;
+						<span class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">gender error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">住所：</div>
-				<div class="input">
+				<div class="input" th:classappend="${#fields.hasErrors('address')}?has-error">
 					<input type="text" name="address" th:value="${emp.address}"/>
+					<span class="text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">address error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">生年月日：</div>
-				<div class="input">
-					<input type="text" name="birthday" th:value="${#dates.format(emp.birthday,'YYYY/MM/dd')}"/> (YYYY/MM/DD)
+				<div class="input" th:classappend="${#fields.hasErrors('birthday')}?has-error">
+					<input type="text" name="birthday" th:value="${#dates.format(emp.birthday,'YYYY/MM/dd')}" placeholder="yyyy/MM/dd"/>
+					<span class="text-danger" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}">birthday error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">権限：</div>
-				<div class="input">
+				<div class="input" th:classappend="${#fields.hasErrors('role')}?has-error">
 					<input type="hidden" name="hiddenRole" th:value="${emp.role}">
-					<input type="radio" name="role" value="ROLE_GENERAL" />一般&nbsp;&nbsp; <input
-						type="radio" name="role" value="ROLE_ADMIN" />管理者
+					<input type="radio" name="role" value="ROLE_GENERAL"/>一般&nbsp;&nbsp; <input
+						type="radio" name="role" value="ROLE_ADMIN"/>管理者&nbsp;
+						<span class="text-danger" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">role error</span>
 				</div>
 			</div>
 			<div class="form">
 				<div class="label">部署名：</div>
-				<div class="input">
+				<div class="input" th:classappend="${#fields.hasErrors('deptId')}?has-error">
 					<input type="hidden" name="hiddenDeptId" th:value="${emp.deptId}">
-					<select id="dept_id" name="deptId">
+					<select name="deptId">
 						<option value="1">営業部</option>
 						<option value="2">経理部</option>
 						<option value="3">総務部</option>
 					</select>
+					<span class="text-danger" th:if="${#fields.hasErrors('deptId')}" th:errors="*{deptId}">deptId error</span>
 				</div>
 			</div>
 			<div class="form">
