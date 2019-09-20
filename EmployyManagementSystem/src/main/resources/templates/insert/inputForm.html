@@ -24,6 +24,7 @@
 			<div class="form">
 				<div class="label">性別：</div>
 				<div class="input">
+					<input type="hidden" name="hiddenGender" th:value="${emp.gender}">
 					<input type="radio" name="gender" value="1" />男性&nbsp; <input
 						type="radio" name="gender" value="2" />女性
 				</div>
@@ -43,6 +44,7 @@
 			<div class="form">
 				<div class="label">権限：</div>
 				<div class="input">
+					<input type="hidden" name="hiddenRole" th:value="${emp.role}">
 					<input type="radio" name="role" value="ROLE_GENERAL" />一般&nbsp;&nbsp; <input
 						type="radio" name="role" value="ROLE_ADMIN" />管理者
 				</div>
@@ -50,6 +52,7 @@
 			<div class="form">
 				<div class="label">部署名：</div>
 				<div class="input">
+					<input type="hidden" name="hiddenDeptId" th:value="${emp.deptId}">
 					<select name="deptId">
 						<option value="1">営業部</option>
 						<option value="2">経理部</option>
@@ -73,6 +76,7 @@
 			</div>
 		</form>
 	</div>
-
+<!-- 使うjsファイル -->
+<script th:src="@{/js/selectedFormJs.js}"></script>
 </body>
 </html>
