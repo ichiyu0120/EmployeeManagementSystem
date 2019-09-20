@@ -36,8 +36,8 @@
 				<td th:text="${@conversion.roleConversion(emp.role)}"></td>
 				<td th:text="${emp.dept.deptName}"></td>
 				<td class="button">
-					<form action="../update/update_input.html">
-						<input type="hidden" name="empId" value="1" />
+					<form th:action="@{/updateInput}" method="post">
+						<input type="hidden" name="empId" th:value="${emp.empId}" />
 						<input type="submit" value="変更" />
 					</form>
 				</td>

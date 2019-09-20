@@ -91,7 +91,9 @@
 			 address = #{address},
 			 birthday = #{birthday},
 			 role = #{role},
-			 dept_id = #{deptId},
+			 dept_id = #{deptId} 
+		WHERE
+			 emp_id = #{empId}
 	</update>
 	
 <!-- 削除 -->

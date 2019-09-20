@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
 <head>
 <meta charset="UTF-8">
 <title>入力フォーム</title>
 </head>
 <body>
-	<h3>新規登録入力画面</h3>
+	<h3>社員更新入力画面</h3>
 	<div class="update">
-		<form th:action="@{/insertCheck}" method="post">
+		<form th:action="@{/updateCheck}" method="post">
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input">
@@ -60,6 +61,7 @@
 			<div class="form">
 				<div class="label"></div>
 				<div class="submit_button">
+					<input type="hidden" name="empId" th:value="${emp.empId}">
 					<input type="submit" value="確認" />
 				</div>
 			</div>
