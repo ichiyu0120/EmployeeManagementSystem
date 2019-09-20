@@ -3,6 +3,8 @@ package com.example.demo.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,11 +40,17 @@ public class UpdateController {
 	
 	//内容確認画面
 	@PostMapping("/updateCheck")
-	public String postUpdateCheck(@ModelAttribute RegistForm form,@RequestParam("empId")int empId,Model model) {
+	public String postUpdateCheck(@ModelAttribute @Validated RegistForm form,BindingResult bindingResult,@RequestParam("empId")int empId,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		emp.setEmpId(empId);
 		model.addAttribute("emp",emp);
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("contents","update/updateCheck");
+			return "main/mainDisplay";
+		}
+		
 		model.addAttribute("contents","update/updateCheck");
 		
 		return "main/mainDisplay";

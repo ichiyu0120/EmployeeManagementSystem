@@ -9,6 +9,13 @@
 <body>
 	<h3>社員更新入力画面</h3>
 	<div class="update">
+	
+	<ul>
+		<li th:each="error:${#fields.detailedErrors()}">
+			<span th:text="${error.message}">Error message</span>
+		</li>
+	</ul>
+	
 		<form th:action="@{/updateCheck}" method="post">
 			<div class="form">
 				<div class="label">パスワード：</div>

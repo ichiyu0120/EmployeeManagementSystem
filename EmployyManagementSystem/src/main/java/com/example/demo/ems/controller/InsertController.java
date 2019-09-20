@@ -3,6 +3,7 @@ package com.example.demo.ems.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,7 +29,7 @@ public class InsertController {
 	
 	//新規登録入力画面へ遷移
 	@GetMapping("/insertInput")
-	public String getInsertInput(Model model) {
+	public String getInsertInput(@ModelAttribute RegistForm form,Model model) {
 		
 		Emp emp = util.empInitialCreate();
 		model.addAttribute("emp",emp);
@@ -39,11 +40,16 @@ public class InsertController {
 	
 	//登録確認画面へ遷移
 	@PostMapping("/insertCheck")
-	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,Model model) {
+	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,BindingResult bindingResult,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
-		
 		model.addAttribute("emp",emp);
+		
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("contents", "insert/inputForm");
+			return "main/mainDisplay";
+		}
+		
 		model.addAttribute("contents","insert/checkForm");
 		
 		return "main/mainDisplay";
