@@ -40,12 +40,27 @@ header .user_info {
 	float: right;
 	margin-right: 20px;
 	line-height: 45px;
-	text-align: right;
+	text-align: center;
 }
 
 header .user_info a {
 	text-decoration: none;
 }
+
+header .head_left {
+	float: left;
+}
+
+header .pipeline{
+	float:left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+header .head_right{
+	float: left;
+}
+
 
 /* ---- サイドバー ---- */
 aside {

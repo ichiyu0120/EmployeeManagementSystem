@@ -15,7 +15,15 @@
 	<header>
 		<div class="content">
 			<div class="title">社員管理システム</div>
-			<div class="user_info">ようこそ、<a href="../update/update_input.html">田中二郎</a>さん<span class="pipeline">|</span><a th:href="@{'/logout'}">ログアウト</a>
+			
+			<div class="user_info">
+			<form class="head_left" name="head_empName" method="post" th:action="@{/updateInput}">
+			ようこそ、<a href="javascript:head_empName.submit()">田中二郎</a>さん
+			</form>
+			<span class="pipeline">|</span>
+			<form class="head_right" name="head_logout" method="post" th:action="@{/logout}">
+			<a href="javascript:head_logout.submit()">ログアウト</a>
+			</form>
 			</div>
 		</div>
 	</header>

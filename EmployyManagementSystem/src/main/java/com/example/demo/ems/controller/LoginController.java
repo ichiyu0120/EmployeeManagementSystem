@@ -12,12 +12,6 @@ public class LoginController {
 		
 		return "main/index";
 	}
-
-	@GetMapping("/logout")
-	public String getLogout() {
-		
-		return "redirect:/index";
-	}
 	
 	@PostMapping("/logout")
 	public String postLogout() {
