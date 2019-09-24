@@ -3,6 +3,8 @@ package com.example.demo.ems.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,10 +25,16 @@ public class ListController {
 	@Autowired
 	Conversion conversion;
 	
+	
+	
+	
 	//get送信された場合はlist.htmlを持たせてmainDisplayへ
 	@GetMapping("/list")
 	public String getList(Model model) {
-		
+	
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String empName = auth.getName();
+		model.addAttribute("name",empName);
 		List<Emp> empList = service.selectAll();
 		model.addAttribute("empList",empList);
 		model.addAttribute("contents","list/list");

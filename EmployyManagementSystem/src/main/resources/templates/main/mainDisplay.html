@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-		 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+		 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		 xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="UTF-8" />
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
@@ -18,7 +19,7 @@
 			
 			<div class="user_info">
 			<form class="head_left" name="head_empName" method="post" th:action="@{/updateInput}">
-			ようこそ、<a href="javascript:head_empName.submit()">田中二郎</a>さん
+			ようこそ、<a href="javascript:head_empName.submit()"><span th:text="${name}"></span><!-- <span sec:authentication="principal.empId"></span> --></a>さん
 			</form>
 			<span class="pipeline">|</span>
 			<form class="head_right" name="head_logout" method="post" th:action="@{/logout}">
