@@ -21,6 +21,9 @@ body {
 	width: 100%;
 }
 
+.error_page{
+	text-align: center;
+}
 /* ---- ヘッダー ---- */
 header {
 	height: 60px;
