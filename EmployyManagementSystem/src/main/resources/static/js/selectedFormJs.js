@@ -14,4 +14,4 @@ $(role).prop('checked',true);
  * 送信されてきたdeptIdの値を初期選択する
  */
 var deptId = $('input:hidden[name="hiddenDeptId"]').val()
-$('#dept_id').val(deptId);
+$('#deptId').val(deptId);

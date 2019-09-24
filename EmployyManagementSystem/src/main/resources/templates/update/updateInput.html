@@ -61,7 +61,7 @@
 				<div class="label">部署名：</div>
 				<div class="input" th:classappend="${#fields.hasErrors('deptId')}?has-error">
 					<input type="hidden" name="hiddenDeptId" th:value="${emp.deptId}">
-					<select name="deptId">
+					<select name="deptId" id="deptId">
 						<option value="1">営業部</option>
 						<option value="2">経理部</option>
 						<option value="3">総務部</option>
