@@ -3,6 +3,7 @@ package com.example.demo.ems.domain.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +16,9 @@ public class EmpService {
 	
 	@Autowired
 	EmpMapper empMapper;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	//全件検索
 	public List<Emp> selectAll(){
@@ -31,11 +35,17 @@ public class EmpService {
 	//新規登録
 	public int insert(Emp emp) {
 		
+		String password = passwordEncoder.encode(emp.getEmpPass());
+		emp.setEmpPass(password);
+		
 		return empMapper.insert(emp);
 	}
 	
 	//更新
 	public int update(Emp emp) {
+		
+		String password = passwordEncoder.encode(emp.getEmpPass());
+		emp.setEmpPass(password);
 		
 		return empMapper.update(emp);
 	}

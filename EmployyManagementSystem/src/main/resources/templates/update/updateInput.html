@@ -14,7 +14,7 @@
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input" th:classappend="${#fields.hasErrors('empPass')}?has-error">
-					<input type="password" name="empPass" th:value="${emp.empPass}" />
+					<input type="password" name="empPass"/>
 					<span class="text-danger" th:if="${#fields.hasErrors('empPass')}" th:errors="*{empPass}">empPass error</span>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</form>
-		<form th:action="@{/list}" method="post">
+		<form th:action="@{/list}" method="get">
 			<div class="form">
 				<div class="label"></div>
 				<div class="submit_button">

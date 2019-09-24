@@ -23,15 +23,9 @@ public class ListController {
 	@Autowired
 	Conversion conversion;
 	
-	//get送信された場合はindexに戻す
+	//get送信された場合はlist.htmlを持たせてmainDisplayへ
 	@GetMapping("/list")
-	public String getList() {
-		return "redirect:/index";
-	}
-	
-	//post送信された場合はlist.htmlを持たせてmainDisplayへ
-	@PostMapping("/list")
-	public String postList(Model model) {
+	public String getList(Model model) {
 		
 		List<Emp> empList = service.selectAll();
 		model.addAttribute("empList",empList);

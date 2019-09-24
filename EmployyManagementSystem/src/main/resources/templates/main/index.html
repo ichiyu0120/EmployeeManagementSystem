@@ -20,7 +20,12 @@
 		<h3>ログイン画面</h3>
 		<div class="form">
 			<p>社員IDとパスワードを入力してください。</p>
-			<form th:action="@{/list}" method="post">
+			<form th:action="@{/login}" method="post">
+			<p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null"
+			 th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+			 class="text-danger">
+			 ログインエラーメッセージ
+			 </p>
 				<div class="login_label">社員ID</div>
 				<div class="login_input">
 					<input type="text" name="empId" />

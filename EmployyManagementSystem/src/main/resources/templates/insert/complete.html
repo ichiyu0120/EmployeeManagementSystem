@@ -9,7 +9,7 @@
 	<h3>社員登録完了画面</h3>
 	<div class="message">
 		<p th:text="${message}"></p>
-		<form name="return_list" method="post" th:action="@{/list}">
+		<form name="return_list" method="get" th:action="@{/list}">
 			<a href="javascript:return_list.submit()">一覧表示に戻る</a>
 		</form>
 	</div>
