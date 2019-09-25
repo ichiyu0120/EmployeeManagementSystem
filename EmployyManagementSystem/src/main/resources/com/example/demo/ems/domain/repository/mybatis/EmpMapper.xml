@@ -156,4 +156,17 @@
 			 emp_id ASC
 	</select>
 	
+	<!-- IDと名前で検索 -->
+	<select id="idAndNameSearch" resultMap="emp">
+		SELECT
+			 emp_id,
+			 emp_name 
+		FROM
+			 emp 
+		WHERE
+			 emp_id = #{empId} 
+		AND
+			 emp_name = #{empName}
+	</select>
+	
 </mapper>

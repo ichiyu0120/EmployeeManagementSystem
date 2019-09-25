@@ -3,6 +3,7 @@ package com.example.demo.ems.domain.repository.mybatis;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+
 import com.example.demo.ems.domain.model.Emp;
 
 @Mapper
@@ -28,5 +29,8 @@ public interface EmpMapper {
 
 	// 部署名検索
 	public List<Emp> deptSearch(int deptId);
+	
+	//パスワード再設定フォームで該当のデータがあるか確認
+	public Emp idAndNameSearch(int empId,String empName);
 
 }

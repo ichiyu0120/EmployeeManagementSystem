@@ -3,6 +3,7 @@ package com.example.demo.ems.util;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.ems.domain.model.Emp;
+import com.example.demo.ems.domain.model.PasswordResetForm;
 import com.example.demo.ems.domain.model.RegistForm;
 
 @Service
@@ -36,6 +37,16 @@ public class RegistUtil {
 		emp.setDeptId(form.getDeptId());
 		emp.setEnable(true);
 
+		return emp;
+	}
+	
+	//formを元にEmpを作成する(パスワード再設定時)
+	public Emp createEmpWithForm(PasswordResetForm form) {
+
+		Emp emp = new Emp();
+		emp.setEmpId(form.getEmpId());
+		emp.setEmpPass(form.getEmpPass());
+		emp.setEmpName(form.getEmpName());
 		return emp;
 	}
 

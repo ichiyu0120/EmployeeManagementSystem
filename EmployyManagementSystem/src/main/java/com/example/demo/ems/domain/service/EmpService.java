@@ -70,4 +70,9 @@ public class EmpService {
 		return empMapper.deptSearch(deptId);
 	}
 	
+	//パスワード再設定フォームで該当のデータがあるか確認
+	public Emp idAndNameSearch(Emp emp) {
+		
+		return empMapper.idAndNameSearch(emp.getEmpId(), emp.getEmpName());
+	}
 }
