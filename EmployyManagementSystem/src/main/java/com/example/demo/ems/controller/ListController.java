@@ -49,22 +49,25 @@ public class ListController {
 		model.addAttribute("empList",empList);
 		model.addAttribute("contents","list/list");
 		
+		model.addAttribute("resultNum",empList.size());
+		
 		return "main/mainDisplay";
 	}
 	
 	//社員名検索
 	@PostMapping("/nameSearch")
 	public String postNameSearch(@ModelAttribute SearchForm form,Model model) {
+		List<Emp> empList;
 		if(form.getName().length() == 0) {
-			List<Emp> empList = service.selectAll();
+			empList = service.selectAll();
 			model.addAttribute("empList",empList);
 		}else {
-			List<Emp> empList = service.nameSearch(form.getName());
+			empList = service.nameSearch(form.getName());
 			model.addAttribute("empList",empList);
 		}
 		model.addAttribute("contents","list/list");
 		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
-		
+		model.addAttribute("resultNum",empList.size());
 		return "main/mainDisplay";
 	}
 	
@@ -75,6 +78,7 @@ public class ListController {
 		model.addAttribute("empList",empList);
 		model.addAttribute("contents","list/list");
 		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
+		model.addAttribute("resultNum",empList.size());
 		
 		return "main/mainDisplay";
 	}

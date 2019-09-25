@@ -172,3 +172,20 @@ input[type=submit] {
 	border-radius: 6px;
 	color: #12526d;
 }
+
+/* ---- 検索結果 ---- */
+span.result_num {
+	font-weight: bold;
+	font-size: large;
+}
+
+div.no_result {
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+div.no_result_mes {
+	font-size: x-large;
+	color: red;
+	margin-bottom: 5%;
+}
