@@ -19,7 +19,7 @@
 			
 			<div class="user_info">
 			<form class="head_left" name="head_empName" method="post" th:action="@{/updateInput}">
-			<input type="hidden" name="empId" value="${sessionEmp.empId}">
+			<input type="hidden" name="empId" th:value="${sessionEmp.empId}">
 			ようこそ、<a href="javascript:head_empName.submit()" ><span th:text="${sessionEmp.empName}"></span></a>さん
 			</form>
 			<span class="pipeline">|</span>

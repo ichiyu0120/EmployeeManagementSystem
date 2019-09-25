@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-		 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+		 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		 xmlns:sec="https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity5">
 <head>
 <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet"></link>
 <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
@@ -14,34 +15,34 @@
 		
 		<h3 class="page_title">社員一覧画面</h3>
 		<div class="regist_link">
-			<a th:href="@{'/insertInput'}">新規社員登録</a>
+			<a th:href="@{'/insertInput'}" sec:authorize="hasRole('ADMIN')">新規社員登録</a>
 		</div>
 		<table class="emp_list_table">
 			<tr>
 				<th class="empId">社員ID</th>
 				<th class="empName">社員名</th>
-				<th class="gender">性別</th>
-				<th class="address">住所</th>
-				<th class="birthday">生年月日</th>
-				<th class="authority">権限</th>
+				<th class="gender" sec:authorize="hasRole('ADMIN')">性別</th>
+				<th class="address" sec:authorize="hasRole('ADMIN')">住所</th>
+				<th class="birthday" sec:authorize="hasRole('ADMIN')">生年月日</th>
+				<th class="authority" sec:authorize="hasRole('ADMIN')">権限</th>
 				<th class="deptName">部署名</th>
-				<th class="button" colspan="2">操作</th>
+				<th class="button" colspan="2"  sec:authorize="hasRole('ADMIN')">操作</th>
 			</tr>
 			<tr th:each="emp:${empList}">
 				<td th:text="${emp.empId}"></td>
 				<td th:text="${emp.empName}"></td>
-				<td th:text="${@conversion.genderConversion(emp.gender)}"></td>
-				<td th:text="${emp.address}"></td>
-				<td th:text="${#dates.format(emp.birthday,'YYYY/M/d')}"></td>
-				<td th:text="${@conversion.roleConversion(emp.role)}"></td>
+				<td th:text="${@conversion.genderConversion(emp.gender)}" sec:authorize="hasRole('ADMIN')"></td>
+				<td th:text="${emp.address}" sec:authorize="hasRole('ADMIN')"></td>
+				<td th:text="${#dates.format(emp.birthday,'YYYY/M/d')}" sec:authorize="hasRole('ADMIN')"></td>
+				<td th:text="${@conversion.roleConversion(emp.role)}" sec:authorize="hasRole('ADMIN')"></td>
 				<td th:text="${emp.dept.deptName}"></td>
-				<td class="button">
+				<td class="button" sec:authorize="hasRole('ADMIN')">
 					<form th:action="@{/updateInput}" method="post">
 						<input type="hidden" name="empId" th:value="${emp.empId}" />
 						<input type="submit" value="変更" />
 					</form>
 				</td>
-				<td class="button">
+				<td class="button" sec:authorize="hasRole('ADMIN')">
 					<form th:action="@{/deleteCheck}" method="post">
 						<input type="hidden" name="empId" th:value="${emp.empId}" />
 						<input type="submit" value="削除" class="delete" />
