@@ -51,6 +51,9 @@ public class ListController {
 		
 		model.addAttribute("resultNum",empList.size());
 		
+		String title = "全件";
+		model.addAttribute("searchTitle", title);
+		
 		return "main/mainDisplay";
 	}
 	
@@ -61,9 +64,18 @@ public class ListController {
 		if(form.getName().length() == 0) {
 			empList = service.selectAll();
 			model.addAttribute("empList",empList);
+			
+			String title = "全件";
+			model.addAttribute("searchTitle", title);
+			
 		}else {
 			empList = service.nameSearch(form.getName());
 			model.addAttribute("empList",empList);
+			
+			String title = "社員名：";
+			String value = form.getName();
+			model.addAttribute("searchTitle", title);
+			model.addAttribute("searchValue", value);
 		}
 		model.addAttribute("contents","list/list");
 		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
@@ -79,6 +91,11 @@ public class ListController {
 		model.addAttribute("contents","list/list");
 		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		model.addAttribute("resultNum",empList.size());
+		
+		String title = "部署名：";
+		String value = conversion.deptConversion(form.getDeptId());
+		model.addAttribute("searchTitle", title);
+		model.addAttribute("searchValue", value);
 		
 		return "main/mainDisplay";
 	}

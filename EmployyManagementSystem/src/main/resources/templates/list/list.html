@@ -19,6 +19,12 @@
 		</div>
 		<div class="result_message">
 			検索結果：<span class="result_num" th:text="${resultNum}"></span>件
+			<span class="disp_title">
+			[
+			<span class="search_title" th:text="${searchTitle}"></span>
+			<span th:if="${searchTitle != null}" class="search_value" th:text="${searchValue}"></span>
+			]
+			</span>
 		</div>
 		<table class="emp_list_table" th:if="${resultNum != 0}">
 			<tr>
@@ -54,14 +60,13 @@
 			</tr>
 		</table>
 		
-		<div class="no_result" th:if="${resultNum == 0}">
-			<div class="no_result_mes">
+		<div class="no_result">
+			<div class="no_result_mes"  th:if="${resultNum == 0}">
 				該当するデータがありません
 			</div>
-			<form name="return_list" method="get" th:action="@{/list}">
-				<a href="javascript:return_list.submit()">全件表示する</a>
+			<form class="return_all_list" name="return_list" method="get" th:action="@{/list}">
+				<a href="javascript:return_list.submit()">全件表示</a>
 			</form>
 		</div>
-
 </body>
 </html>
