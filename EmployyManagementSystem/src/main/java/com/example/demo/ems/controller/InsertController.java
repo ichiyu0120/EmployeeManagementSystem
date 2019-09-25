@@ -1,5 +1,7 @@
 package com.example.demo.ems.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,9 @@ public class InsertController {
 	@Autowired
 	EmpService service;
 	
+	@Autowired
+	HttpSession session;
+	
 	//新規登録入力画面へ遷移
 	@GetMapping("/insertInput")
 	public String getInsertInput(@ModelAttribute RegistForm form,Model model) {
@@ -34,6 +39,7 @@ public class InsertController {
 		Emp emp = util.empInitialCreate();
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents", "insert/inputForm");
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		return "main/mainDisplay";
 	}
@@ -51,6 +57,7 @@ public class InsertController {
 		}
 		
 		model.addAttribute("contents","insert/checkForm");
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		return "main/mainDisplay";
 	}
@@ -63,7 +70,7 @@ public class InsertController {
 		
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents", "insert/inputForm");
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 	}
 	
@@ -83,7 +90,7 @@ public class InsertController {
 		
 		model.addAttribute("message",message);
 		model.addAttribute("contents", "insert/complete");
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 		
 		

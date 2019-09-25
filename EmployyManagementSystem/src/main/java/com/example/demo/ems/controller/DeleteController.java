@@ -1,5 +1,7 @@
 package com.example.demo.ems.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class DeleteController {
 	@Autowired
 	Conversion conversion;
 	
+	@Autowired
+	HttpSession session;
+	
 	//削除確認画面へ遷移
 	@PostMapping("/deleteCheck")
 	public String postDeleteCheck(@RequestParam("empId") int empId,Model model) {
@@ -26,6 +31,7 @@ public class DeleteController {
 		Emp emp = service.selectOne(empId);
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents","delete/deleteCheck");
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		return "main/mainDisplay";
 	}
@@ -45,7 +51,8 @@ public class DeleteController {
 		
 		model.addAttribute("message", message);
 		model.addAttribute("contents","delete/deleteComplete");
-		
+
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 	}
 	

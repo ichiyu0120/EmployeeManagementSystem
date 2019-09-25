@@ -1,5 +1,7 @@
 package com.example.demo.ems.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ems.domain.model.Emp;
 import com.example.demo.ems.domain.model.RegistForm;
+import com.example.demo.ems.domain.model.SessionEmp;
 import com.example.demo.ems.domain.service.EmpService;
 import com.example.demo.ems.util.Conversion;
 import com.example.demo.ems.util.RegistUtil;
@@ -27,6 +30,9 @@ public class UpdateController {
 	@Autowired
 	RegistUtil util;
 	
+	@Autowired
+	HttpSession session;
+	
 	//empIdの該当データを取得して入力画面へ
 	@PostMapping("/updateInput")
 	public String postUpdateInput(@ModelAttribute RegistForm form,@RequestParam("empId")int empId,Model model) {
@@ -34,7 +40,7 @@ public class UpdateController {
 		Emp emp = service.selectOne(empId);
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents","update/updateInput");
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));		
 		return "main/mainDisplay";
 	}
 	
@@ -45,14 +51,14 @@ public class UpdateController {
 		Emp emp = util.createEmpWithForm(form);
 		emp.setEmpId(empId);
 		model.addAttribute("emp",emp);
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("contents","update/updateInput");
 			return "main/mainDisplay";
 		}
 		
 		model.addAttribute("contents","update/updateCheck");
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 	}
 	
@@ -64,7 +70,7 @@ public class UpdateController {
 		emp.setEmpId(empId);
 		model.addAttribute("emp",emp);
 		model.addAttribute("contents","update/updateInput");
-		
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 	}
 	
@@ -82,9 +88,16 @@ public class UpdateController {
 			message = "処理に失敗しました。";
 		}
 		
+		SessionEmp sessionEmp = (SessionEmp)session.getAttribute("sessionEmp");
+		int sessionEmpId = sessionEmp.getEmpId();
+		if(empId == sessionEmpId) {
+			sessionEmp.setEmpName(emp.getEmpName());
+			session.setAttribute("sessionEmp", sessionEmp);
+		}
+		
 		model.addAttribute("message",message);
 		model.addAttribute("contents", "update/updateComplete");
-		
+		model.addAttribute("sessionEmp",sessionEmp);
 		
 		return "main/mainDisplay";
 	}

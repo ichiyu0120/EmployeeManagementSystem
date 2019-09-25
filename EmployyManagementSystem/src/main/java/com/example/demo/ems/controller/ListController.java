@@ -2,6 +2,8 @@ package com.example.demo.ems.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.ems.domain.model.Emp;
 import com.example.demo.ems.domain.model.SearchForm;
+import com.example.demo.ems.domain.model.SessionEmp;
 import com.example.demo.ems.domain.service.EmpService;
 import com.example.demo.ems.util.Conversion;
 
@@ -25,7 +28,8 @@ public class ListController {
 	@Autowired
 	Conversion conversion;
 	
-	
+	@Autowired
+	HttpSession session;
 	
 	
 	//get送信された場合はlist.htmlを持たせてmainDisplayへ
@@ -33,8 +37,14 @@ public class ListController {
 	public String getList(Model model) {
 	
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String empName = auth.getName();
-		model.addAttribute("name",empName);
+		int empId = Integer.parseInt(auth.getName());
+		Emp emp = service.selectOne(empId);
+		SessionEmp sessionEmp = new SessionEmp();
+		sessionEmp.setEmpId(empId);
+		sessionEmp.setEmpName(emp.getEmpName());
+		session.setAttribute("sessionEmp", sessionEmp);
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
+		
 		List<Emp> empList = service.selectAll();
 		model.addAttribute("empList",empList);
 		model.addAttribute("contents","list/list");
@@ -53,6 +63,7 @@ public class ListController {
 			model.addAttribute("empList",empList);
 		}
 		model.addAttribute("contents","list/list");
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		return "main/mainDisplay";
 	}
@@ -63,6 +74,7 @@ public class ListController {
 		List<Emp> empList = service.deptSearch(form.getDeptId());
 		model.addAttribute("empList",empList);
 		model.addAttribute("contents","list/list");
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		return "main/mainDisplay";
 	}

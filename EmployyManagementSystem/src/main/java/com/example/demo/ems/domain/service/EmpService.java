@@ -70,5 +70,4 @@ public class EmpService {
 		return empMapper.deptSearch(deptId);
 	}
 	
-	
 }

@@ -28,4 +28,5 @@ public interface EmpMapper {
 
 	// 部署名検索
 	public List<Emp> deptSearch(int deptId);
+
 }

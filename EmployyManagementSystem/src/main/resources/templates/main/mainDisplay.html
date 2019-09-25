@@ -19,7 +19,8 @@
 			
 			<div class="user_info">
 			<form class="head_left" name="head_empName" method="post" th:action="@{/updateInput}">
-			ようこそ、<a href="javascript:head_empName.submit()"><span th:text="${name}"></span><!-- <span sec:authentication="principal.empId"></span> --></a>さん
+			<input type="hidden" name="empId" value="${sessionEmp.empId}">
+			ようこそ、<a href="javascript:head_empName.submit()" ><span th:text="${sessionEmp.empName}"></span></a>さん
 			</form>
 			<span class="pipeline">|</span>
 			<form class="head_right" name="head_logout" method="post" th:action="@{/logout}">
