@@ -186,7 +186,7 @@ PasswordResetFormの中のempIdフィールドを消してみたり、その他�
 ・更新フォームは初期値を表示させる為にempIdを使っている。  
 ・その為にheader部のformにempIdの名前でsessionEmpIdを設定している。  
 ・登録更新の入力チェックを実装した後にセッション関係の実装を行った。  
-
+しかし、更新時のチェックは動作しているし新規登録時はControllerでもRegistFormでもempIdには触らないので、結局理由はわからない・・・。
 
 </div>
 </details>
