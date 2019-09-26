@@ -155,7 +155,35 @@ indexから遷移してempIdとempNameの２つで参照して、該当データ
 <summary>・2019/09/26 ←【New!】</summary>
 <div>
 
-パスワード再設定機能を作成。
+パスワード再設定機能を作成。  
+再設定入力フォームで入力チェックを実装しましたが、エラーが出てわけわからない事になってます。  
+
+<details>
+<summary>わけわからん詳細</summary>
+<div>
+
+バリデーションとエラーメッセージを実装し、動作確認  
+↓  
+①IllegalStateException: Neither BindingResult nor plain target object for bean name 'PasswordResetForm' available as request attribute  
+上記エラー発生。(th:objectの値を大文字から始めてた。)  
+↓  
+再度動作確認。  
+エラーメッセージが日本語と英語が重なって表示される。  
+↓  
+Insertの時はちゃんと動作してるか確認。  
+↓  
+②org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'empId' cannot be found on null  
+最初に実装した時は動いていたはずなのに上記エラーが発生。  
+↓  
+PasswordResetFormの中のempIdフィールドを消してみたり、その他消したり戻したりをやって結局変更する前の形に戻したところ、パスワード再設定フォームは入力チェックの動作確認ができた。  
+↓  
+登録時の入力チェックを確認するとやはり②のエラーが発生する。  
+  
+登録時はempIdの値は全く触らないのに何故empId云々のエラーが出るのかよくわかりません。
+
+</div>
+</details>
+
 </div>
 </details>
 
