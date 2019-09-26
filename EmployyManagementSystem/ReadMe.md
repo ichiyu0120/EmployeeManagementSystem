@@ -131,7 +131,7 @@ htmlのラジオボタンやプルダウン形式のフォームに関して、�
 
 
 <details>
-<summary>・2019/09/25 ←【New!】</summary>
+<summary>・2019/09/25</summary>
 <div>
 
 ログインの次の処理でIdとNameをセッションに格納、各メソッドでmodelにセットしてhtmlに渡すというちょっと強引な方法ですが動作は確認出来てます。  
@@ -152,12 +152,22 @@ indexから遷移してempIdとempNameの２つで参照して、該当データ
 
 
 <details>
+<summary>・2019/09/26 ←【New!】</summary>
+<div>
+
+パスワード再設定機能を作成。
+</div>
+</details>
+
+
+<details>
 <summary>[追加実装] ←【New!】</summary>
 <div>
 
 ・検索結果の件数を表示。  
 ・検索結果0件だった場合の表示。  
 ・検索内容も併せて表示。  
+・よくあるパスワード再設定機能  
 </div>
 </details>
 
