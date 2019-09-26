@@ -47,11 +47,34 @@ public class IndexController {
 			return "main/passwordResetForm";
 			
 		}else {
-			
+			String secretPassword = "";
+			for(int i = 0; i < form.getEmpPass().length(); i++) {
+				secretPassword += "＊";
+			}
+			model.addAttribute("secretPassword",secretPassword);
 			model.addAttribute("emp",emp);
 			
 			return "main/passwordResetCheck";
 		}
+	}
+	
+	@PostMapping("/passwordResetComplete")
+	public String postPasswordResetComplete(@ModelAttribute PasswordResetForm form,Model model) {
+		
+		Emp emp = util.createEmpWithForm(form);
+		
+		int result = service.passwordUpdate(emp);
+		
+		String message;
+		if(result == 0) {
+			message = "更新処理に失敗しました。";
+		}else {
+			message = "パスワードを再設定しました。";
+		}
+
+		model.addAttribute("message",message);
+		
+		return "main/passwordResetComplete";
 	}
 	
 }

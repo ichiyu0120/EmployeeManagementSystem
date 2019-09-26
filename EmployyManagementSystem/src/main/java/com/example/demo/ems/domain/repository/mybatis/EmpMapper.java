@@ -32,5 +32,8 @@ public interface EmpMapper {
 	
 	//パスワード再設定フォームで該当のデータがあるか確認
 	public Emp idAndNameSearch(int empId,String empName);
+	
+	//パスワードの再設定
+	public int passwordUpdate(String empPass,int empId);
 
 }

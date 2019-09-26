@@ -75,4 +75,13 @@ public class EmpService {
 		
 		return empMapper.idAndNameSearch(emp.getEmpId(), emp.getEmpName());
 	}
+	
+	//パスワード再設定
+	public int passwordUpdate(Emp emp) {
+		
+		String password = passwordEncoder.encode(emp.getEmpPass());
+		emp.setEmpPass(password);
+		
+		return empMapper.passwordUpdate(emp.getEmpPass(), emp.getEmpId());
+	}
 }

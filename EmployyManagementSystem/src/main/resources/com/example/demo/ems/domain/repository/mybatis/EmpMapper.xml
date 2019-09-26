@@ -169,4 +169,14 @@
 			 emp_name = #{empName}
 	</select>
 	
+	<!-- パスワードの更新 -->
+	<update id="passwordUpdate">
+		UPDATE
+			 emp 
+		SET
+			 emp_pass = #{empPass} 
+		WHERE
+			 emp_id = #{empId}
+	</update>
+	
 </mapper>
