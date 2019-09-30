@@ -12,17 +12,17 @@ import lombok.Data;
 @Data
 public class PasswordResetForm {
 	
-	@NotNull(message="{require_check}")
-	@Min(value=1,message="{min_check}")
-	@Max(value=99999,message="{max_check}")
+	@NotNull(groups=ValidGroup1.class)
+	@Min(value=1,groups=ValidGroup2.class)
+	@Max(value=99999,groups=ValidGroup2.class)
 	private int empId;
 	
-	@NotBlank(message="{require_check}")
-	@Length(max=30,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=1,max=30,groups=ValidGroup2.class)
 	private String empName;
 	
-	@NotBlank(message="{require_check}")
-	@Length(max=16,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=4,max=16,groups=ValidGroup2.class)
 	private String empPass;
 
 }

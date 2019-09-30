@@ -15,32 +15,32 @@ import lombok.Data;
 @Data
 public class RegistForm {
 
-	@NotBlank(message="{require_check}")
-	@Length(max=16,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=4,max=16,groups=ValidGroup2.class)
 	private String empPass;
 	
-	@NotBlank(message="{require_check}")
-	@Length(max=30,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=1,max=30,groups=ValidGroup2.class)
 	private String empName;
 	
-	@NotNull(message="{require_check}")
-	@Min(value=1,message="{min_check}")
-	@Max(value=2,message="{max_check}")
+	@NotNull(groups=ValidGroup1.class)
+	@Min(value=1,groups=ValidGroup2.class)
+	@Max(value=2,groups=ValidGroup2.class)
 	private int gender;
 	
-	@NotBlank(message="{require_check}")
-	@Length(max=60,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=1,max=60,groups=ValidGroup2.class)
 	private String address;
 	
-	@NotNull(message="{require_check}")
+	@NotNull(groups=ValidGroup1.class)
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date birthday;
 	
-	@NotBlank(message="{require_check}")
-	@Length(max=20,message="{length_check}")
+	@NotBlank(groups=ValidGroup1.class)
+	@Length(min=1,max=20)
 	private String role;
 	
-	@Min(value=1,message="{min_check}")
-	@Max(value=3,message="{max_check}")
+	@Min(value=1,groups=ValidGroup2.class)
+	@Max(value=3,groups=ValidGroup2.class)
 	private int deptId;
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.ems.domain.model.Emp;
+import com.example.demo.ems.domain.model.GroupOrder;
 import com.example.demo.ems.domain.model.PasswordResetForm;
 import com.example.demo.ems.domain.service.EmpService;
 import com.example.demo.ems.util.RegistUtil;
@@ -39,7 +40,7 @@ public class IndexController {
 	
 	//再設定のチェック
 	@PostMapping("/passwordResetCheck")
-	public String postPasswordResetCheck(@ModelAttribute @Validated PasswordResetForm form,BindingResult bindingResult,Model model) {
+	public String postPasswordResetCheck(@ModelAttribute @Validated(GroupOrder.class) PasswordResetForm form,BindingResult bindingResult,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		

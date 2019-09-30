@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.ems.domain.model.Emp;
+import com.example.demo.ems.domain.model.GroupOrder;
 import com.example.demo.ems.domain.model.RegistForm;
 import com.example.demo.ems.domain.model.SessionEmp;
 import com.example.demo.ems.domain.service.EmpService;
@@ -46,7 +47,7 @@ public class UpdateController {
 	
 	//内容確認画面
 	@PostMapping("/updateCheck")
-	public String postUpdateCheck(@ModelAttribute @Validated RegistForm form,BindingResult bindingResult,@RequestParam("empId")int empId,Model model) {
+	public String postUpdateCheck(@ModelAttribute @Validated(GroupOrder.class) RegistForm form,BindingResult bindingResult,@RequestParam("empId")int empId,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		emp.setEmpId(empId);

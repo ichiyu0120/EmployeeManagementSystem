@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.ems.domain.model.Emp;
+import com.example.demo.ems.domain.model.GroupOrder;
 import com.example.demo.ems.domain.model.RegistForm;
 import com.example.demo.ems.domain.service.EmpService;
 import com.example.demo.ems.util.Conversion;
@@ -46,7 +47,7 @@ public class InsertController {
 	
 	//登録確認画面へ遷移
 	@PostMapping("/insertCheck")
-	public String postInsertcheck(@ModelAttribute @Validated RegistForm form,BindingResult bindingResult,Model model) {
+	public String postInsertcheck(@ModelAttribute @Validated(GroupOrder.class) RegistForm form,BindingResult bindingResult,Model model) {
 		
 		Emp emp = util.createEmpWithForm(form);
 		model.addAttribute("emp",emp);
