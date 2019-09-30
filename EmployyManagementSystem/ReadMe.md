@@ -152,7 +152,7 @@ indexから遷移してempIdとempNameの２つで参照して、該当データ
 
 
 <details>
-<summary>・2019/09/26 ←【New!】</summary>
+<summary>・2019/09/26</summary>
 <div>
 
 パスワード再設定機能を作成。  
@@ -196,7 +196,34 @@ PasswordResetFormの中のempIdフィールドを消してみたり、その他�
 
 
 <details>
-<summary>[追加実装] ←【New!】</summary>
+<summary>・2019/09/30 ←【New!】</summary>
+<div>
+
+バリデーションのエラーメッセージの部分を最適化。  
+
+セッションについて教えていただいたサイト等で調べて、@Sessionや@Component等  
+試してみましたがどうすれば動作するのかいまいちわかりませんでした・・・。  
+
+ですが、前回出ていたエラーが解決しました。  
+insertの時が出来なくて、殆ど同じような内容のupdateが機能しているので  
+ソースコードをよく見ながら処理の流れを追ってみると、insertの時は入力チェックの  
+if(bindingResult.hasErrors()) {  
+return ～～;  
+}  
+で分岐した後で、sessionEmpIdをmodelに入れてた事が原因でした。  
+if文の中には記述してなかったので、入力エラーの時はmodelにsessionEmpIdが  
+格納されないままページ遷移した結果、遷移先でsessionEmpIdを表示しようとしても  
+その値がないからエラーが発生し、updateの時はif文より前にsessionEmpIdを格納していたので  
+エラーが起きなかったようです。  
+
+ただこれも適切にセッション管理が出来ていれば起きなかった問題な気がします・・・。
+
+</div>
+</details>
+
+
+<details>
+<summary>[追加実装]</summary>
 <div>
 
 ・検索結果の件数を表示。  
@@ -206,19 +233,3 @@ PasswordResetFormの中のempIdフィールドを消してみたり、その他�
 </div>
 </details>
 
-
-<details>
-<summary>[未実装]</summary>
-<div>
-
-・その他、細かい追加機能etc  
-</div>
-</details>  
-
-
-<details>
-<summary></summary>
-<div>
-
-</div>
-</details>

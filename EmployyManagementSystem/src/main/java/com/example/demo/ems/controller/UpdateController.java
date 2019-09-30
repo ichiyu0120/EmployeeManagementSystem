@@ -59,7 +59,6 @@ public class UpdateController {
 		}
 		
 		model.addAttribute("contents","update/updateCheck");
-		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		return "main/mainDisplay";
 	}
 	

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -34,8 +33,8 @@ public class InsertController {
 	HttpSession session;
 	
 	//新規登録入力画面へ遷移
-	@GetMapping("/insertInput")
-	public String getInsertInput(@ModelAttribute RegistForm form,Model model) {
+	@PostMapping("/insertInput")
+	public String postInsertInput(@ModelAttribute RegistForm form,Model model) {
 		
 		Emp emp = util.empInitialCreate();
 		model.addAttribute("emp",emp);
@@ -51,6 +50,7 @@ public class InsertController {
 		
 		Emp emp = util.createEmpWithForm(form);
 		model.addAttribute("emp",emp);
+		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
 		
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("contents", "insert/inputForm");
@@ -58,7 +58,7 @@ public class InsertController {
 		}
 		
 		model.addAttribute("contents","insert/checkForm");
-		model.addAttribute("sessionEmp",session.getAttribute("sessionEmp"));
+		
 		
 		return "main/mainDisplay";
 	}
